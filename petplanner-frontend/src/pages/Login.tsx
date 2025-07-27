@@ -33,7 +33,7 @@ import { useForm } from "react-hook-form";
 import { LoginForm } from "../types";
 import { useAppStore } from "../store/appStore";
 import "./Login.css";
-import LogoGIF from '../assets/img/LogoGIF.gif';
+import LoginGIF from "../assets/img/Login.gif";
 
 const Login: React.FC = () => {
   const history = useHistory();
@@ -67,11 +67,7 @@ const Login: React.FC = () => {
           <div className="avatar-section">
             <div className="avatar-container">
               <div className="avatar-circle">
-                <img
-                  src={LogoGIF}
-                  alt="Pet GIF"
-                  className="avatar-gif"
-                />
+                <img src={LoginGIF} alt="Pet GIF" className="avatar-gif" />
               </div>
             </div>
           </div>
