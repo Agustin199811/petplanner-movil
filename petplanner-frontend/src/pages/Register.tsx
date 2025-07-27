@@ -90,7 +90,7 @@ const Register: React.FC = () => {
           {/* Welcome Section */}
           <div className="welcome-section">
             <img
-              src="./public/img/LogoGIF.gif"
+              src="./src/assets/img/LogoGIF.gif"
               alt="Pet GIF"
               className="avatar-gif"
             />

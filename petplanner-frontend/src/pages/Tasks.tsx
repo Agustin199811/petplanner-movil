@@ -244,13 +244,13 @@ const Tasks: React.FC = () => {
           onIonChange={(e) => setSelectedFilter(e.detail.value as TaskFilter)}
         >
           <IonSegmentButton value="all">
-            <IonLabel>Todas</IonLabel>
+            <IonLabel>TODAS</IonLabel>
           </IonSegmentButton>
           <IonSegmentButton value="pending">
-            <IonLabel>Pendientes</IonLabel>
+            <IonLabel>PENDIENTES</IonLabel>
           </IonSegmentButton>
           <IonSegmentButton value="completed">
-            <IonLabel>Completadas</IonLabel>
+            <IonLabel>COMPLETADAS</IonLabel>
           </IonSegmentButton>
         </IonSegment>
 
@@ -305,14 +305,20 @@ const Tasks: React.FC = () => {
           </IonFabButton>
         </IonFab>
 
-        {/* Popover de filtros avanzados */}
+        {/* Popover de filtros avanzados - CORREGIDO */}
         <IonPopover
           className="filters-popover"
           isOpen={showFilterPopover}
           onDidDismiss={() => setShowFilterPopover(false)}
           showBackdrop={true}
+          // Configuraciones adicionales para mejor comportamiento
+          trigger={undefined}
+          alignment="center"
+          side="bottom"
+          // Asegurar que se centre en la pantalla
+          reference="event"
         >
-          <IonContent>
+          <IonContent className="ion-no-padding">
             <div className="filters-content">
               {/* Header */}
               <div className="filters-header">
@@ -333,135 +339,147 @@ const Tasks: React.FC = () => {
                 )}
               </div>
 
-              {/* Filtros de prioridad y frecuencia */}
-              <div className="filter-section">
-                <h4 className="filter-section-title">Configuración</h4>
+              {/* Contenido scrolleable */}
+              <div className="filters-sections">
+                {/* Filtros de prioridad y frecuencia */}
+                <div className="filter-section">
+                  <h4 className="filter-section-title">Configuración</h4>
 
-                <IonItem className="modern-select">
-                  <IonSelect
-                    placeholder="Seleccionar prioridad"
-                    value={selectedPriority}
-                    onIonChange={(e) => setSelectedPriority(e.detail.value)}
-                  >
-                    <IonSelectOption value="">
-                      Todas las prioridades
-                    </IonSelectOption>
-                    <IonSelectOption value={TaskPriority.HIGH}>
-                      🔴 Alta prioridad
-                    </IonSelectOption>
-                    <IonSelectOption value={TaskPriority.MEDIUM}>
-                      🟡 Prioridad media
-                    </IonSelectOption>
-                    <IonSelectOption value={TaskPriority.LOW}>
-                      🟢 Prioridad baja
-                    </IonSelectOption>
-                  </IonSelect>
-                </IonItem>
-
-                <IonItem className="modern-select">
-                  <IonSelect
-                    placeholder="Seleccionar frecuencia"
-                    value={selectedFrequency}
-                    onIonChange={(e) => setSelectedFrequency(e.detail.value)}
-                  >
-                    <IonSelectOption value="">
-                      Todas las frecuencias
-                    </IonSelectOption>
-                    <IonSelectOption value={TaskFrequency.ONCE}>
-                      📅 Una vez
-                    </IonSelectOption>
-                    <IonSelectOption value={TaskFrequency.DAILY}>
-                      🔄 Diaria
-                    </IonSelectOption>
-                    <IonSelectOption value={TaskFrequency.WEEKLY}>
-                      📆 Semanal
-                    </IonSelectOption>
-                    <IonSelectOption value={TaskFrequency.MONTHLY}>
-                      🗓️ Mensual
-                    </IonSelectOption>
-                  </IonSelect>
-                </IonItem>
-              </div>
-
-              {/* Categorías */}
-              <div className="filter-section">
-                <h4 className="filter-section-title">Categorías</h4>
-                <div className="categories-grid">
-                  {categories.map((category) => (
-                    <IonItem
-                      key={category.id}
-                      className={`category-filter-item ${
-                        selectedCategories.includes(category.id)
-                          ? "selected"
-                          : ""
-                      }`}
-                      button
-                      onClick={() => {
-                        if (selectedCategories.includes(category.id)) {
-                          setSelectedCategories(
-                            selectedCategories.filter(
-                              (id) => id !== category.id
-                            )
-                          );
-                        } else {
-                          setSelectedCategories([
-                            ...selectedCategories,
-                            category.id,
-                          ]);
-                        }
-                      }}
+                  <IonItem className="modern-select" lines="none">
+                    <IonSelect
+                      placeholder="Seleccionar prioridad"
+                      value={selectedPriority}
+                      onIonChange={(e) => setSelectedPriority(e.detail.value)}
+                      interface="popover"
                     >
-                      <div className="category-content">
-                        <IonCheckbox
-                          className="category-checkbox"
-                          checked={selectedCategories.includes(category.id)}
-                          onIonChange={(e) => {
-                            if (e.detail.checked) {
-                              setSelectedCategories([
-                                ...selectedCategories,
-                                category.id,
-                              ]);
-                            } else {
-                              setSelectedCategories(
-                                selectedCategories.filter(
-                                  (id) => id !== category.id
-                                )
-                              );
-                            }
-                          }}
-                        />
-                        <div
-                          className="category-indicator"
-                          style={{ backgroundColor: category.color }}
-                        />
-                        <span className="category-name">{category.name}</span>
-                        <span className="category-count">
-                          {
-                            tasks.filter(
-                              (task) => task.category.id === category.id
-                            ).length
+                      <IonSelectOption value="">
+                        Todas las prioridades
+                      </IonSelectOption>
+                      <IonSelectOption value={TaskPriority.HIGH}>
+                        🔴 Alta prioridad
+                      </IonSelectOption>
+                      <IonSelectOption value={TaskPriority.MEDIUM}>
+                        🟡 Prioridad media
+                      </IonSelectOption>
+                      <IonSelectOption value={TaskPriority.LOW}>
+                        🟢 Prioridad baja
+                      </IonSelectOption>
+                    </IonSelect>
+                  </IonItem>
+
+                  <IonItem className="modern-select" lines="none">
+                    <IonSelect
+                      placeholder="Seleccionar frecuencia"
+                      value={selectedFrequency}
+                      onIonChange={(e) => setSelectedFrequency(e.detail.value)}
+                      interface="popover"
+                    >
+                      <IonSelectOption value="">
+                        Todas las frecuencias
+                      </IonSelectOption>
+                      <IonSelectOption value={TaskFrequency.ONCE}>
+                        📅 Una vez
+                      </IonSelectOption>
+                      <IonSelectOption value={TaskFrequency.DAILY}>
+                        🔄 Diaria
+                      </IonSelectOption>
+                      <IonSelectOption value={TaskFrequency.WEEKLY}>
+                        📆 Semanal
+                      </IonSelectOption>
+                      <IonSelectOption value={TaskFrequency.MONTHLY}>
+                        🗓️ Mensual
+                      </IonSelectOption>
+                    </IonSelect>
+                  </IonItem>
+                </div>
+
+                {/* Categorías */}
+                <div className="filter-section">
+                  <h4 className="filter-section-title">Categorías</h4>
+                  <div className="categories-grid">
+                    {categories.map((category) => (
+                      <IonItem
+                        key={category.id}
+                        className={`category-filter-item ${
+                          selectedCategories.includes(category.id)
+                            ? "selected"
+                            : ""
+                        }`}
+                        button
+                        lines="none"
+                        onClick={() => {
+                          if (selectedCategories.includes(category.id)) {
+                            setSelectedCategories(
+                              selectedCategories.filter(
+                                (id) => id !== category.id
+                              )
+                            );
+                          } else {
+                            setSelectedCategories([
+                              ...selectedCategories,
+                              category.id,
+                            ]);
                           }
-                        </span>
-                      </div>
-                    </IonItem>
-                  ))}
+                        }}
+                      >
+                        <div className="category-content">
+                          <IonCheckbox
+                            className="category-checkbox"
+                            checked={selectedCategories.includes(category.id)}
+                            onIonChange={(e) => {
+                              if (e.detail.checked) {
+                                setSelectedCategories([
+                                  ...selectedCategories,
+                                  category.id,
+                                ]);
+                              } else {
+                                setSelectedCategories(
+                                  selectedCategories.filter(
+                                    (id) => id !== category.id
+                                  )
+                                );
+                              }
+                            }}
+                          />
+                          <div
+                            className="category-indicator"
+                            style={{ backgroundColor: category.color }}
+                          />
+                          <span className="category-name">{category.name}</span>
+                          <span className="category-count">
+                            {
+                              tasks.filter(
+                                (task) => task.category.id === category.id
+                              ).length
+                            }
+                          </span>
+                        </div>
+                      </IonItem>
+                    ))}
+                  </div>
                 </div>
               </div>
 
-              {/* Botones de acción */}
+              {/* Botones de acción - Siempre visibles */}
               <div className="filter-actions">
                 <IonButton
                   fill="outline"
                   className="filter-button-clear"
-                  onClick={clearAllFilters}
+                  onClick={() => {
+                    clearAllFilters();
+                  }}
                 >
+                  <IonIcon icon={close} slot="start" />
                   Limpiar
                 </IonButton>
                 <IonButton
                   className="filter-button-apply"
-                  onClick={() => setShowFilterPopover(false)}
+                  onClick={() => {
+                    setShowFilterPopover(false);
+                  }}
                 >
-                  Aplicar filtros
+                  <IonIcon icon={checkmark} slot="start" />
+                  Aplicar
                 </IonButton>
               </div>
             </div>

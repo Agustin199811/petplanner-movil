@@ -67,7 +67,7 @@ const Login: React.FC = () => {
             <div className="avatar-container">
               <div className="avatar-circle">
                 <img
-                  src="./public/img/LogoGIF.gif"
+                  src="./src/assets/img/LogoGIF.gif"
                   alt="Pet GIF"
                   className="avatar-gif"
                 />

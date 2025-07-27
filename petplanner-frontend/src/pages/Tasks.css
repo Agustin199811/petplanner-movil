@@ -1,5 +1,3 @@
-/* task-styles.css */
-
 /* Variables CSS personalizadas */
 :root {
   --primary-gradient: linear-gradient(
@@ -19,55 +17,21 @@
   --background-light: #ffffff;
 }
 
-/* Estilos para la página Tasks */
-.tasks-page {
-  --background: var(--background-light);
-}
-
-.tasks-page ion-header {
-  box-shadow: none;
-}
-
-.tasks-page ion-toolbar {
-  --background: transparent;
-  --color: var(--text-primary);
-  padding: 8px 0;
-}
-
-.tasks-page ion-title {
-  font-weight: 700;
-  font-size: 24px;
-  color: var(--text-primary);
-}
-
-/* Botón de filtros con indicador */
-.filter-button {
-  position: relative;
-  --color: var(--text-secondary);
-}
-
-.filter-button:hover {
-  --color: var(--primary-color);
-}
-
-.filter-indicator {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  width: 8px;
-  height: 8px;
-  background: var(--primary-gradient);
-  border-radius: 50%;
-  border: 2px solid white;
-}
-
-/* Segmentos personalizados */
+/* Segmentos personalizados - COMPLETAMENTE ARREGLADO */
 .custom-segment {
   background: white;
   border-radius: 12px;
-  padding: 4px;
-  margin: 16px;
+  padding: 8px;
+  margin: 16px 12px;
   box-shadow: var(--shadow-light);
+  /* Asegurar altura mínima */
+  min-height: 52px;
+  /* Permitir overflow visible para bordes redondeados */
+  overflow: visible;
+  /* Distribución equitativa del espacio */
+  display: flex;
+  /* Más espacio entre botones */
+  gap: 4px;
 }
 
 .custom-segment ion-segment-button {
@@ -75,438 +39,428 @@
   --color-checked: white;
   --indicator-color: transparent;
   --indicator-box-shadow: none;
-  border-radius: 8px;
-  margin: 2px;
+  border-radius: 10px !important;
+  margin: 0;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13px;
   transition: all 0.3s ease;
-}
-
-.custom-segment ion-segment-button.segment-button-checked {
-  background: var(--primary-gradient);
-  color: white;
-  transform: scale(1.02);
-}
-
-/* Indicador de filtros activos */
-.active-filters-card {
-  margin: 8px 16px 0 16px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: var(--shadow-light);
-  border-left: 4px solid var(--primary-color);
-}
-
-.active-filters-content {
+  /* Distribución equitativa */
+  flex: 1;
+  min-width: 0;
+  /* Padding interno mejorado */
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --padding-top: 14px;
+  --padding-bottom: 14px;
+  /* Asegurar que el contenido se centre */
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px;
-}
-
-.clear-filters-btn {
-  --color: var(--primary-color);
-  font-size: 12px;
-  font-weight: 600;
-}
-
-/* FAB personalizado */
-.custom-fab {
-  --background: var(--primary-gradient);
-  --box-shadow: var(--shadow-medium);
-  --border-radius: 16px;
-  transition: all 0.3s ease;
-}
-
-.custom-fab:hover {
-  transform: scale(1.1);
-}
-
-.animated-button {
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4);
-  }
-  70% {
-    transform: scale(1.05);
-    box-shadow: 0 0 0 10px rgba(255, 107, 53, 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(255, 107, 53, 0);
-  }
-}
-
-/* Estilos para TaskCard */
-.task-card {
-  margin: 8px 16px;
-  border-radius: var(--card-radius);
-  box-shadow: var(--shadow-light);
-  background: white;
-  border: none;
-  transition: all 0.3s ease;
+  justify-content: center;
+  /* Forzar el border radius */
   overflow: hidden;
 }
 
-.task-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
+.custom-segment ion-segment-button.segment-button-checked {
+  background: var(--primary-gradient) !important;
+  color: white !important;
+  transform: scale(1.02);
+  border-radius: 10px !important;
+  /* Asegurar que se vea el borde redondeado */
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.25);
 }
 
-.task-card.task-completed {
-  opacity: 0.7;
-  background: white;
+.custom-segment ion-segment-button ion-label {
+  /* Centrar el texto */
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+  /* Permitir ajuste del texto */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  /* Asegurar que herede el color */
+  color: inherit;
 }
 
-.task-card ion-card-content {
-  padding: 16px;
+/* Solución específica para "COMPLETADAS" */
+.custom-segment ion-segment-button[value="completed"] {
+  /* Dar más espacio específicamente a COMPLETADAS */
+  flex: 1.2;
 }
 
-.task-card ion-item {
+.custom-segment ion-segment-button[value="completed"] ion-label {
+  font-size: 11px; /* Texto más pequeño */
+  padding: 0 2px; /* Padding adicional */
+}
+
+/* Para pantallas medianas */
+@media (max-width: 400px) {
+  .custom-segment {
+    margin: 12px 8px;
+    padding: 6px;
+    gap: 3px;
+  }
+
+  .custom-segment ion-segment-button {
+    font-size: 12px;
+    --padding-start: 8px;
+    --padding-end: 8px;
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+  }
+
+  .custom-segment ion-segment-button ion-label {
+    font-size: 11px;
+  }
+
+  .custom-segment ion-segment-button[value="completed"] {
+    flex: 1.3; /* Aún más espacio en pantallas medianas */
+  }
+
+  .custom-segment ion-segment-button[value="completed"] ion-label {
+    font-size: 10px;
+    padding: 0 1px;
+  }
+}
+
+/* Para pantallas pequeñas - usar texto más corto */
+@media (max-width: 380px) {
+  .custom-segment ion-segment-button[value="completed"] ion-label {
+    font-size: 0; /* Ocultar texto original */
+  }
+
+  .custom-segment ion-segment-button[value="completed"] ion-label::after {
+    content: "HECHAS";
+    font-size: 12px;
+    font-weight: 600;
+    color: inherit;
+  }
+
+  .custom-segment ion-segment-button[value="completed"] {
+    flex: 1; /* Volver a tamaño normal con texto corto */
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 320px) {
+  .custom-segment {
+    margin: 12px 6px;
+    padding: 3px;
+  }
+
+  .custom-segment ion-segment-button {
+    margin: 1px;
+    border-radius: 8px !important;
+    --padding-start: 4px;
+    --padding-end: 4px;
+  }
+
+  .custom-segment ion-segment-button.segment-button-checked {
+    border-radius: 8px !important;
+  }
+
+  .custom-segment ion-segment-button ion-label {
+    font-size: 11px;
+  }
+
+  .custom-segment ion-segment-button[value="completed"] ion-label::after {
+    content: "HECHAS";
+    font-size: 11px;
+  }
+
+  .custom-segment ion-segment-button[value="pending"] ion-label {
+    font-size: 10px;
+  }
+}
+
+/* Asegurar que los estilos se apliquen correctamente */
+ion-segment-button {
+  --border-radius: 10px;
+}
+
+ion-segment-button.segment-button-checked {
+  --border-radius: 10px;
+}
+
+/* Popover de filtros - COMPLETAMENTE ARREGLADO */
+.filters-popover {
+  --width: 360px;
+  --max-width: 95vw;
+  --height: auto;
+  --max-height: 90vh;
+  --border-radius: 20px;
+  --box-shadow: 0 12px 40px rgba(255, 107, 53, 0.25),
+    0 4px 16px rgba(0, 0, 0, 0.1);
+  --backdrop-opacity: 0.4;
+  /* Arreglar el posicionamiento */
+  --offset-y: 0px;
+  --offset-x: 0px;
+}
+
+.filters-popover .popover-content {
+  border-radius: 20px;
+  overflow: hidden;
+  max-height: 90vh;
+}
+
+.filters-popover ion-content {
   --padding-start: 0;
   --padding-end: 0;
-  --inner-padding-end: 0;
-}
-
-/* Checkbox personalizado */
-.task-card ion-checkbox {
-  --size: 20px;
-  --checkbox-background: white;
-  --checkbox-background-checked: var(--primary-color);
-  --border-color: var(--primary-color);
-  --border-color-checked: var(--primary-color);
-  --border-radius: 6px;
-  --checkmark-color: white;
-  margin-right: 12px;
-}
-
-/* Título de la tarea */
-.task-title {
-  font-weight: 600;
-  font-size: 16px;
-  color: var(--text-primary);
-  margin: 0 0 8px 0;
-  line-height: 1.3;
-}
-
-.task-title.completed {
-  text-decoration: line-through;
-  color: var(--text-secondary);
-}
-
-/* Descripción de la tarea */
-.task-description {
-  color: var(--text-secondary);
-  font-size: 14px;
-  margin: 0 0 12px 0;
-  line-height: 1.4;
-}
-
-/* Chips personalizados */
-.task-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 12px;
-}
-
-.custom-chip {
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --overflow: auto;
+  --background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
   border-radius: 20px;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 4px 12px;
-  height: auto;
-  min-height: 24px;
-  border: none;
 }
 
-.category-chip {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid currentColor;
-}
-
-.priority-chip-high {
-  background: linear-gradient(135deg, #e74c3c, #c0392b);
-  color: white;
-}
-
-.priority-chip-medium {
-  background: linear-gradient(135deg, #f39c12, #e67e22);
-  color: white;
-}
-
-.priority-chip-low {
-  background: linear-gradient(135deg, #27ae60, #2ecc71);
-  color: white;
-}
-
-.frequency-chip {
-  background: linear-gradient(135deg, #9b59b6, #8e44ad);
-  color: white;
-}
-
-/* Información de fecha y puntos */
-.task-info {
+.filters-content {
+  padding: 28px 24px;
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 20px;
+  position: relative;
   display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-top: 8px;
-}
-
-.task-info-item {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.task-info-item ion-icon {
-  font-size: 14px;
-}
-
-.task-info-item ion-text {
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.overdue {
-  color: #e74c3c !important;
-}
-
-.points-info {
-  color: var(--primary-color) !important;
-}
-
-/* Botón de acciones */
-.task-actions {
-  margin-left: auto;
-}
-
-.action-button {
-  --color: var(--text-secondary);
-  --padding: 8px;
-  --border-radius: 8px;
-}
-
-.action-button:hover {
-  --background: rgba(255, 107, 53, 0.1);
-  --color: var(--primary-color);
-}
-
-/* Información de completado */
-.completion-info {
-  margin-top: 12px;
-  padding-top: 8px;
-  border-top: 1px solid #ecf0f1;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.completion-info ion-icon {
-  font-size: 14px;
-  color: #27ae60;
-}
-
-.completion-info ion-text {
-  font-size: 11px;
-  color: #27ae60;
-  font-weight: 500;
-}
-
-/* Estado vacío */
-.empty-state-card {
-  margin: 32px 16px;
-  text-align: center;
-  background: white;
-  border-radius: var(--card-radius);
-  box-shadow: var(--shadow-light);
-}
-
-.empty-state-content {
-  padding: 40px 20px;
-}
-
-.empty-state-icon {
-  font-size: 4rem;
-  margin-bottom: 16px;
-}
-
-.empty-state-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 8px;
-}
-
-.empty-state-description {
-  color: var(--text-secondary);
-  margin-bottom: 24px;
-}
-
-.empty-state-button {
-  --background: var(--primary-gradient);
-  --border-radius: 12px;
-  font-weight: 600;
-}
-
-/* Popover de filtros mejorado */
-.filters-popover {
-  --background: white;
-  --backdrop-filter: blur(20px);
-  --border-radius: 24px;
-  --box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  --width: 300px;
-  --max-width: 90vw;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  min-height: 100%;
+  /* Permitir scroll interno */
+  overflow-y: auto;
+  /* Agregar un borde sutil */
   border: 1px solid rgba(255, 107, 53, 0.1);
 }
 
-.filters-popover::before {
+/* Header del popover */
+.filters-header {
+  text-align: center;
+  margin-bottom: 28px;
+  position: relative;
+  padding: 20px;
+  border-bottom: 2px solid rgba(255, 107, 53, 0.1);
+  /* Agregar decoración */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 107, 53, 0.05) 0%,
+    rgba(247, 147, 30, 0.05) 100%
+  );
+  border-radius: 16px;
+}
+
+.filters-title {
+  font-size: 24px;
+  font-weight: 800;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 8px 0;
+  text-shadow: 0 2px 4px rgba(255, 107, 53, 0.1);
+}
+
+.filters-subtitle {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin: 0;
+  font-weight: 500;
+}
+
+.active-filters-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: var(--primary-gradient);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 16px;
+  min-width: 24px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+  border: 2px solid white;
+}
+
+/* Secciones de filtros */
+.filter-section {
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+/* Contenedor scrolleable para las secciones */
+.filters-sections {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+  margin-bottom: 16px;
+}
+
+/* Scrollbar personalizado */
+.filters-sections::-webkit-scrollbar {
+  width: 4px;
+}
+
+.filters-sections::-webkit-scrollbar-track {
+  background: rgba(255, 107, 53, 0.1);
+  border-radius: 2px;
+}
+
+.filters-sections::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 2px;
+}
+
+.filters-sections::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+.filter-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 18px 0;
+  padding-left: 8px;
+  border-left: 4px solid var(--primary-color);
+  position: relative;
+}
+
+.filter-section-title::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--primary-gradient);
+  border-radius: 2px;
+}
+
+/* Selects modernos */
+.modern-select {
+  --background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  --border-radius: 16px;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --min-height: 56px;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  border: 2px solid rgba(255, 107, 53, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-select::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 107, 53, 0.02),
-    rgba(247, 147, 30, 0.02)
-  );
-  border-radius: inherit;
-  pointer-events: none;
-}
-
-.filters-content {
-  padding: 24px;
-  position: relative;
-  z-index: 1;
-}
-
-.filters-header {
-  margin-bottom: 24px;
-  text-align: center;
-}
-
-.filters-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin: 0 0 8px 0;
+  height: 2px;
   background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.filters-subtitle {
-  font-size: 14px;
-  color: var(--text-secondary);
-  margin: 0;
-}
-
-.filter-section {
-  margin-bottom: 24px;
-}
-
-.filter-section-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.filter-section-title::before {
-  content: "";
-  width: 4px;
-  height: 16px;
-  background: var(--primary-gradient);
-  border-radius: 2px;
-}
-
-/* Select mejorado */
-.modern-select {
-  --background: white;
-  --color: var(--text-primary);
-  --border-radius: 16px;
-  --padding: 16px;
-  margin-bottom: 16px;
-  border: 2px solid rgba(255, 107, 53, 0.1);
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+.modern-select:hover::before {
+  opacity: 1;
 }
 
 .modern-select:hover {
-  --background: white;
-  border-color: rgba(255, 107, 53, 0.2);
+  border-color: var(--primary-color);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.15), 0 2px 6px rgba(0, 0, 0, 0.04);
   transform: translateY(-1px);
 }
 
 .modern-select ion-select {
+  --placeholder-color: var(--text-secondary);
   --color: var(--text-primary);
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 15px;
 }
 
-.modern-select ion-select::part(text) {
-  color: var(--text-primary);
-}
-
-.modern-select ion-select::part(icon) {
-  color: var(--primary-color);
-}
-
-/* Categorías mejoradas */
+/* Grid de categorías */
 .categories-grid {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 12px;
+  width: 100%;
 }
 
 .category-filter-item {
-  --padding-start: 0;
-  --padding-end: 0;
-  --inner-padding-end: 0;
-  --border-radius: 12px;
-  --background: white;
-  border: 2px solid transparent;
+  --background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  --border-radius: 16px;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --min-height: 64px;
   margin: 0;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  border-radius: 16px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 2px solid rgba(255, 107, 53, 0.1);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
 }
 
-.category-filter-item.selected {
-  --background: rgba(255, 107, 53, 0.05);
-  border-color: rgba(255, 107, 53, 0.3);
-  transform: scale(1.02);
+.category-filter-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .category-filter-item:hover {
-  --background: white;
-  border-color: rgba(255, 107, 53, 0.1);
-  transform: translateX(4px);
+  --background: linear-gradient(145deg, #ffffff 0%, #f0f0f0 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.15),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: var(--primary-color);
+}
+
+.category-filter-item:hover::before {
+  opacity: 1;
+}
+
+.category-filter-item.selected {
+  --background: linear-gradient(
+    145deg,
+    rgba(255, 107, 53, 0.15) 0%,
+    rgba(247, 147, 30, 0.1) 100%
+  );
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2), 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.category-filter-item.selected::before {
+  opacity: 1;
 }
 
 .category-content {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
+  gap: 16px;
   width: 100%;
+  padding: 12px 0;
 }
 
 .category-checkbox {
-  --size: 18px;
+  --size: 20px;
   --border-radius: 6px;
   --border-color: var(--primary-color);
-  --border-color-checked: var(--primary-color);
-  --checkbox-background-checked: var(--primary-color);
   --checkmark-color: white;
+  --background-checked: var(--primary-color);
+  margin: 0;
 }
 
 .category-indicator {
@@ -514,149 +468,264 @@
   height: 16px;
   border-radius: 50%;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .category-name {
+  flex: 1;
+  font-size: 14px;
   font-weight: 500;
   color: var(--text-primary);
-  flex: 1;
 }
 
 .category-count {
+  background: var(--primary-color);
+  color: white;
   font-size: 12px;
-  color: var(--text-secondary);
-  background: rgba(255, 107, 53, 0.1);
-  padding: 2px 6px;
-  border-radius: 8px;
   font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 10px;
+  min-width: 24px;
+  text-align: center;
 }
 
-/* Botones de acción mejorados */
+/* Botones de acción - ARREGLADO para estar siempre visibles */
 .filter-actions {
   display: flex;
   gap: 12px;
-  margin-top: 32px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255, 107, 53, 0.1);
+  padding-top: 16px;
+  border-top: 2px solid rgba(255, 107, 53, 0.1);
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  flex-shrink: 0;
+  margin-top: auto;
 }
 
 .filter-button-clear {
-  --background: transparent;
-  --color: var(--text-secondary);
-  --border-radius: 16px;
-  --border-color: rgba(255, 107, 53, 0.2);
-  --border-width: 2px;
-  font-weight: 600;
   flex: 1;
-  height: 48px;
-  transition: all 0.3s ease;
+  --border-color: var(--primary-color);
+  --color: var(--primary-color);
+  --border-radius: 16px;
+  --border-width: 2px;
+  height: 52px;
+  font-weight: 700;
+  font-size: 15px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  --ripple-color: rgba(255, 107, 53, 0.1);
+}
+
+.filter-button-clear::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 107, 53, 0.1),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.filter-button-clear:hover::before {
+  left: 100%;
 }
 
 .filter-button-clear:hover {
-  --background: rgba(255, 107, 53, 0.05);
-  --color: var(--primary-color);
-  --border-color: rgba(255, 107, 53, 0.3);
+  --border-color: var(--secondary-color);
+  --color: var(--secondary-color);
   transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2);
 }
 
 .filter-button-apply {
+  flex: 1;
   --background: var(--primary-gradient);
   --color: white;
   --border-radius: 16px;
-  font-weight: 600;
-  flex: 2;
-  height: 48px;
-  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
-  transition: all 0.3s ease;
+  height: 52px;
+  font-weight: 700;
+  font-size: 15px;
+  --box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-button-apply::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.filter-button-apply:hover::before {
+  left: 100%;
 }
 
 .filter-button-apply:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+  --box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4),
+    0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* Contador de filtros activos */
-.active-filters-badge {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: var(--primary-gradient);
-  color: white;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 4px 8px;
-  border-radius: 12px;
-  min-width: 20px;
-  text-align: center;
-}
-
-/* Toasts personalizados */
-.custom-toast {
-  --border-radius: 12px;
-  --box-shadow: var(--shadow-medium);
-}
-
-/* Loading state */
-.loading-state {
-  text-align: center;
-  padding: 60px 20px;
-  color: var(--text-secondary);
-}
-
-/* Refresher personalizado */
-.custom-refresher {
-  --color: var(--primary-color);
-}
-
-/* Contenido principal */
-.tasks-content {
-  --background: white;
-}
-
-/* Headers personalizados */
-.tasks-header {
-  --background: white;
-}
-
-/* Items personalizados */
-.modern-item {
-  --background: white;
-  --color: var(--text-primary);
-}
-
-/* Responsive - Mantenemos solo modo claro con fondo blanco */
-@media (max-width: 768px) {
+/* Responsive para el popover */
+@media (max-width: 480px) {
   .filters-popover {
-    --width: 280px;
+    --width: 95vw;
+    --max-width: 95vw;
+    --max-height: 85vh;
   }
 
   .filters-content {
     padding: 20px;
+    min-height: 450px;
+    max-height: 85vh;
+  }
+
+  .filters-header {
+    margin-bottom: 16px;
+    padding: 12px;
+  }
+
+  .filters-title {
+    font-size: 20px;
+  }
+
+  .filter-section {
+    margin-bottom: 16px;
+  }
+
+  .filter-section-title {
+    font-size: 16px;
+  }
+
+  .categories-grid {
+    gap: 8px;
+  }
+
+  .category-filter-item {
+    --min-height: 52px;
+    --padding-start: 16px;
+    --padding-end: 16px;
+  }
+
+  .category-content {
+    gap: 12px;
+    padding: 8px 0;
+  }
+
+  .category-name {
+    font-size: 14px;
+  }
+
+  .modern-select {
+    --min-height: 48px;
+    --padding-start: 16px;
+    --padding-end: 16px;
+    margin-bottom: 12px;
+  }
+
+  .filter-actions {
+    gap: 10px;
+    padding-top: 12px;
+  }
+
+  .filter-button-clear,
+  .filter-button-apply {
+    height: 44px;
+    font-size: 13px;
   }
 }
 
-/* Sobrescribir cualquier fondo oscuro */
-ion-app,
-ion-content,
-.ion-page,
-.main-content {
-  --background: white !important;
-  background: white !important;
+@media (max-width: 320px) {
+  .filters-content {
+    padding: 16px;
+    min-height: 400px;
+    max-height: 80vh;
+  }
+
+  .filters-header {
+    padding: 10px;
+    margin-bottom: 12px;
+  }
+
+  .filters-title {
+    font-size: 18px;
+  }
+
+  .filter-actions {
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 10px;
+  }
+
+  .filter-button-clear,
+  .filter-button-apply {
+    width: 100%;
+    height: 42px;
+    font-size: 13px;
+  }
 }
 
-/* Asegurar que todos los elementos tengan fondo blanco */
-.task-list-container {
-  background: white;
+/* Botón de filtro en el header */
+.filter-button {
+  position: relative;
+  --color: var(--text-primary);
 }
 
-.content-area {
-  background: white;
+.filter-indicator {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
 }
 
-/* Override para popovers y modals */
-.filters-popover,
-.modal-wrapper {
-  --background: white !important;
-  background: white !important;
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 107, 53, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 53, 0);
+  }
+}
+
+/* Card de filtros activos */
+.active-filters-card {
+  margin: 8px 12px 0 12px;
+  --background: rgba(255, 107, 53, 0.05);
+  border-left: 4px solid var(--primary-color);
+}
+
+.active-filters-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+}
+
+.clear-filters-btn {
+  --color: var(--primary-color);
+  font-size: 12px;
+  font-weight: 600;
 }
