@@ -101,18 +101,16 @@ const App: React.FC = () => {
         <IonReactRouter>
           <IonSplitPane contentId="main">
             <IonRouterOutlet id="main">
+              <Route exact path="/" render={() => <Redirect to="/login" />} />
               {/* Rutas públicas */}
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
 
               {/* Rutas protegidas */}
               <ProtectedRoute path="/tabs" component={Tabs} />
-
-              
             </IonRouterOutlet>
           </IonSplitPane>
         </IonReactRouter>
-
       </IonApp>
     </QueryClientProvider>
   );

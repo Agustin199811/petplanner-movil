@@ -15,7 +15,7 @@ const app = express();
 
 app.use(
     cors({
-        origin: `http://localhost:${process.env.PORT_REACT}`,
+        origin:  '*',
 
         methods: ["GET", "POST", "PUT", "DELETE"],
         allowedHeaders: ["Content-Type", "Authorization"],
