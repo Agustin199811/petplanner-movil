@@ -38,6 +38,7 @@ import { useForm } from "react-hook-form";
 import { RegisterForm, PetType } from "../types";
 import "./Login.css";
 import { useAppStore } from "../store/appStore";
+import LogoGIF from '../assets/img/LogoGIF.gif';
 
 const Register: React.FC = () => {
   const history = useHistory();
@@ -90,7 +91,7 @@ const Register: React.FC = () => {
           {/* Welcome Section */}
           <div className="welcome-section">
             <img
-              src="./src/assets/img/LogoGIF.gif"
+              src={LogoGIF}
               alt="Pet GIF"
               className="avatar-gif"
             />
