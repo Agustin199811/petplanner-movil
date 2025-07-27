@@ -1,0 +1,370 @@
+/* Header minimalista */
+.minimalist-header {
+  --background: #fff;
+}
+
+.minimalist-header ion-toolbar {
+  --background: #fff;
+  --color: #333;
+  --border-color: transparent;
+}
+
+.minimalist-header ion-title {
+  font-weight: 600;
+  color: #333;
+}
+
+.header-logout-btn {
+  --color: #666;
+  margin-right: 8px;
+}
+
+/* Content minimalista */
+.minimalist-content {
+  --background: #f8f9fa;
+}
+
+/* Tarjeta principal del perfil */
+.main-profile-card {
+  margin: 16px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+.main-profile-content {
+  padding: 24px;
+}
+
+/* Header del perfil */
+.profile-header-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.profile-avatar {
+  width: 60px;
+  height: 60px;
+  margin-right: 16px;
+  position: relative;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
+}
+
+.profile-avatar img {
+  border-radius: 50%;
+}
+
+.online-indicator {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 14px;
+  height: 14px;
+  background: #4caf50;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-name {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.level-chip {
+  --background: rgba(255, 107, 53, 0.1);
+  --color: #ff6b35;
+  height: 28px;
+  font-size: 12px;
+}
+
+.level-chip ion-icon {
+  font-size: 14px;
+  margin-right: 4px;
+}
+
+/* Stats row */
+.stats-row {
+  display: flex;
+  justify-content: space-around;
+  padding: 16px 0;
+  margin-bottom: 16px;
+  border-top: 1px solid #f0f2f5;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.stat-value.positive {
+  color: #ff6b35;
+}
+
+.stat-value.streak {
+  color: #f7931e;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Profile items */
+.profile-email,
+.profile-member {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  --background: transparent;
+  --min-height: 48px;
+  margin: 8px 0;
+}
+
+.profile-email ion-icon,
+.profile-member ion-icon {
+  color: #666;
+  font-size: 18px;
+  margin-right: 12px;
+}
+
+.profile-email ion-label h3,
+.profile-member ion-label h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin: 0 0 2px 0;
+}
+
+.profile-email ion-label p,
+.profile-member ion-label p {
+  font-size: 13px;
+  color: #666;
+  margin: 0;
+}
+
+/* Progress card */
+.progress-card {
+  margin: 16px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  background: #fff;
+}
+
+.progress-card ion-card-content {
+  padding: 20px;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.progress-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.progress-title ion-icon {
+  color: #ff6b35;
+  font-size: 18px;
+}
+
+.progress-points {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ff6b35;
+}
+
+.level-info {
+  margin-bottom: 8px;
+}
+
+.level-info ion-text {
+  font-size: 13px;
+  color: #666;
+}
+
+.level-progress-bar {
+  --progress-background: #f0f2f5;
+  --background: linear-gradient(90deg, #ff6b35, #f7931e);
+  height: 6px;
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+
+.progress-footer ion-text {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Stats card */
+.stats-card {
+  margin: 16px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  background: #fff;
+}
+
+.stats-card ion-card-content {
+  padding: 20px;
+}
+
+.stats-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.stats-title ion-icon {
+  color: #ff6b35;
+  font-size: 18px;
+}
+
+.stats-grid {
+  margin-bottom: 20px;
+}
+
+.stat-col {
+  padding: 0 8px;
+}
+
+.stat-box {
+  background: rgba(255, 107, 53, 0.1);
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.stat-box:hover {
+  transform: translateY(-2px);
+}
+
+.stat-box.flame {
+  background: rgba(255, 107, 53, 0.1);
+}
+
+.stat-box.trophy {
+  background: rgba(247, 147, 30, 0.1);
+}
+
+.stat-box ion-icon {
+  font-size: 24px;
+  color: #ff6b35;
+  margin-bottom: 8px;
+}
+
+.stat-box.trophy ion-icon {
+  color: #f7931e;
+}
+
+.stat-number {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.stat-desc {
+  display: block;
+  font-size: 11px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.completion-stats {
+  border-top: 1px solid #f0f2f5;
+  padding-top: 16px;
+}
+
+.completion-col {
+  text-align: center;
+  padding: 0 8px;
+}
+
+.completion-number {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ff6b35;
+  margin-bottom: 4px;
+}
+
+.completion-desc {
+  display: block;
+  font-size: 11px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Logout section */
+.logout-section {
+  padding: 16px;
+  margin-bottom: 60px;
+}
+
+.logout-button {
+  --border-color: transparent;
+  --background: transparent;
+  --color: #ff4757;
+  height: 48px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.logout-button:hover {
+  --background: rgba(255, 71, 87, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .main-profile-card,
+  .progress-card,
+  .stats-card {
+    margin: 12px;
+  }
+
+  .profile-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .profile-name {
+    font-size: 18px;
+  }
+
+  .main-profile-content,
+  .progress-card ion-card-content,
+  .stats-card ion-card-content {
+    padding: 16px;
+  }
+}

@@ -7,12 +7,20 @@ import taskRouter from "./routes/task.routes";
 import petRouter from "./routes/pet.routes";
 import categoryRouter from "./routes/category.routes";
 import { loggerMiddleware } from "./common/middleware/logger.middleware";
+import cors from "cors";
 // Cargar variables de entorno
 dotenv.config();
 
 const app = express();
 
+app.use(
+    cors({
+        origin: `http://localhost:${process.env.PORT_REACT}`,
 
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        allowedHeaders: ["Content-Type", "Authorization"],
+    })
+);
 
 
 // CORS
@@ -22,13 +30,10 @@ app.use(loggerMiddleware);
 
 
 
-
-app.use(loggerMiddleware);
-
 // Rutas de la API
 app.use("/api/auth", authRoute);
 app.use("/api/tasks", taskRouter);
-app.use("/api/pets", petRouter);
+app.use("/api/pet", petRouter);
 app.use("/api/categories", categoryRouter);
 
 
@@ -45,6 +50,9 @@ app.get("/api/health", (req: Request, res: Response) => {
 TypeOrmConfig.initialize()
     .then(async () => {
         console.log('Database initialized');
+
+        // Cargar datos iniciales
+        await seedCategories();
     })
     .catch(async (err) => {
         console.error(err);

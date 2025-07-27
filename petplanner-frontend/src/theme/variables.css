@@ -1,0 +1,266 @@
+/* Ionic Variables and Theming. For more info, please see:
+http://ionicframework.com/docs/theming/ */
+
+/** Ionic CSS Variables **/
+:root {
+  /** primary **/
+  --ion-color-primary: #ffb800;
+  --ion-color-primary-rgb: 255, 184, 0;
+  --ion-color-primary-contrast: #000000;
+  --ion-color-primary-contrast-rgb: 0, 0, 0;
+  --ion-color-primary-shade: #e1a200;
+  --ion-color-primary-tint: #ffc01a;
+
+  /** secondary **/
+  --ion-color-secondary: #ff6b35;
+  --ion-color-secondary-rgb: 255, 107, 53;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #e15e2f;
+  --ion-color-secondary-tint: #ff7a49;
+
+  /** tertiary **/
+  --ion-color-tertiary: #f7931e;
+  --ion-color-tertiary-rgb: 247, 147, 30;
+  --ion-color-tertiary-contrast: #000000;
+  --ion-color-tertiary-contrast-rgb: 0, 0, 0;
+  --ion-color-tertiary-shade: #d9811a;
+  --ion-color-tertiary-tint: #f89e35;
+
+  /** success **/
+  --ion-color-success: #2dd36f;
+  --ion-color-success-rgb: 45, 211, 111;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #28ba62;
+  --ion-color-success-tint: #42d77d;
+
+  /** warning **/
+  --ion-color-warning: #ffc409;
+  --ion-color-warning-rgb: 255, 196, 9;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #e0ac08;
+  --ion-color-warning-tint: #ffca22;
+
+  /** danger **/
+  --ion-color-danger: #eb445a;
+  --ion-color-danger-rgb: 235, 68, 90;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #cf3c4f;
+  --ion-color-danger-tint: #ed576b;
+
+  /** dark **/
+  --ion-color-dark: #222428;
+  --ion-color-dark-rgb: 34, 36, 40;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1e2023;
+  --ion-color-dark-tint: #383a3e;
+
+  /** medium **/
+  --ion-color-medium: #92949c;
+  --ion-color-medium-rgb: 146, 148, 156;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #808289;
+  --ion-color-medium-tint: #9d9fa6;
+
+  /** light **/
+  --ion-color-light: #f4f5f8;
+  --ion-color-light-rgb: 244, 245, 248;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-tint: #f5f6f9;
+
+  /* Custom Pet Theme Colors */
+  --pet-happy: #ffb800;
+  --pet-neutral: #ff6b35;
+  --pet-sad: #eb445a;
+  --pet-background: #fff8e1;
+  --pet-card-bg: #fffbf0;
+
+  /* Custom backgrounds */
+  --ion-background-color: #fafafa;
+  --ion-toolbar-background: #ffffff;
+  --ion-tab-bar-background: #ffffff;
+
+  /* Border radius */
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 20px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+/* Custom CSS Classes */
+.pet-card {
+  background: var(--pet-card-bg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  margin: 16px;
+  padding: 20px;
+}
+
+.task-card {
+  border-radius: var(--border-radius-md);
+  margin: 8px 16px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-card:active {
+  transform: scale(0.98);
+  box-shadow: var(--shadow-lg);
+}
+
+.stats-card {
+  background: linear-gradient(
+    135deg,
+    var(--ion-color-primary) 0%,
+    var(--ion-color-secondary) 100%
+  );
+  border-radius: var(--border-radius-lg);
+  color: white;
+  padding: 24px;
+  margin: 16px;
+  box-shadow: var(--shadow-lg);
+}
+
+.category-chip {
+  border-radius: var(--border-radius-xl);
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.priority-high {
+  --background: var(--ion-color-danger);
+  --color: white;
+}
+
+.priority-medium {
+  --background: var(--ion-color-warning);
+  --color: black;
+}
+
+.priority-low {
+  --background: var(--ion-color-success);
+  --color: white;
+}
+
+.pet-mood-very-happy {
+  filter: hue-rotate(0deg) brightness(1.2);
+}
+
+.pet-mood-happy {
+  filter: hue-rotate(0deg) brightness(1.1);
+}
+
+.pet-mood-neutral {
+  filter: hue-rotate(30deg) brightness(1);
+}
+
+.pet-mood-sad {
+  filter: hue-rotate(240deg) brightness(0.8);
+}
+
+.pet-mood-very-sad {
+  filter: hue-rotate(240deg) brightness(0.6) grayscale(0.3);
+}
+
+.animated-button {
+  transition: all 0.3s ease;
+}
+
+.animated-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.gradient-background {
+  background: linear-gradient(135deg, #ffb800 0%, #ff6b35 50%, #f7931e 100%);
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ion-color-primary);
+  border-radius: 2px;
+}
+
+/* Loading animations */
+@keyframes bounce {
+  0%,
+  20%,
+  53%,
+  80%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40%,
+  43% {
+    transform: translate3d(0, -30px, 0);
+  }
+  70% {
+    transform: translate3d(0, -15px, 0);
+  }
+  90% {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+.bounce-animation {
+  animation: bounce 1s ease infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .pet-card {
+    margin: 12px;
+    padding: 16px;
+  }
+
+  .stats-card {
+    margin: 12px;
+    padding: 20px;
+  }
+}

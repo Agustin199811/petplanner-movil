@@ -1,0 +1,204 @@
+.minimalist-tabs {
+  --background: white;
+}
+
+.custom-tab-bar {
+  --background: white;
+  --border: none;
+  --color: #7f8c8d;
+  border-top: 1px solid rgba(255, 107, 53, 0.08);
+  backdrop-filter: blur(20px);
+  padding: 8px 0 calc(env(safe-area-inset-bottom) + 8px);
+  height: auto;
+  box-shadow: 0 -2px 20px rgba(255, 107, 53, 0.05);
+}
+
+.custom-tab-button {
+  --color: #7f8c8d;
+  --color-selected: #ff6b35;
+  --background-focused: transparent;
+  --ripple-color: rgba(255, 107, 53, 0.1);
+  padding: 0;
+  margin: 0 20px;
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: visible;
+}
+
+.custom-tab-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 107, 53, 0.1),
+    rgba(255, 179, 71, 0.1)
+  );
+  border-radius: 20px;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.custom-tab-button.tab-selected::before {
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+}
+
+.custom-tab-button:hover::before {
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+}
+
+.tab-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px 8px;
+  position: relative;
+  z-index: 1;
+  gap: 4px;
+}
+
+.icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+}
+
+.tab-icon {
+  font-size: 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: inherit;
+}
+
+.custom-tab-button.tab-selected .tab-icon {
+  transform: scale(1.1);
+  color: #ff6b35;
+}
+
+.custom-tab-button:hover .tab-icon {
+  transform: scale(1.05);
+}
+
+.tab-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+}
+
+.custom-tab-button.tab-selected .tab-label {
+  color: #ff6b35;
+  font-weight: 600;
+  transform: scale(1.05);
+}
+
+.task-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  --background: linear-gradient(135deg, #ff6b35, #f7931e);
+  --color: white;
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+  animation: subtle-pulse 2s infinite;
+  border: 2px solid white;
+}
+
+@keyframes subtle-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.custom-tab-button.tab-selected {
+  transform: translateY(-2px);
+}
+
+/* Animación de entrada para el badge */
+.task-badge {
+  animation: badge-appear 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    subtle-pulse 2s infinite 0.3s;
+}
+
+@keyframes badge-appear {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Estados de focus para accesibilidad */
+.custom-tab-button:focus-visible {
+  outline: 2px solid rgba(255, 107, 53, 0.5);
+  outline-offset: 2px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .custom-tab-button {
+    margin: 0 12px;
+  }
+
+  .tab-content {
+    padding: 10px 12px 6px;
+  }
+
+  .tab-icon {
+    font-size: 22px;
+  }
+
+  .tab-label {
+    font-size: 10px;
+  }
+}
+
+/* Modo oscuro - aunque mantenemos fondo blanco */
+@media (prefers-color-scheme: dark) {
+  .custom-tab-bar {
+    border-top-color: rgba(255, 107, 53, 0.15);
+  }
+}
+
+/* Animación suave al cambiar de tab */
+.custom-tab-button {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Efecto de micro-interacción */
+.custom-tab-button:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.custom-tab-button.tab-selected:active {
+  transform: translateY(-3px) scale(0.98);
+}

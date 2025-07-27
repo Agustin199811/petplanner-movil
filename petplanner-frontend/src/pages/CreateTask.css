@@ -1,0 +1,250 @@
+.create-task-page {
+  --background: #ffffff;
+}
+
+.custom-header {
+  box-shadow: none;
+}
+
+.gradient-toolbar {
+  --background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffb347 100%);
+  --color: white;
+  padding: 8px 0;
+}
+
+.back-button {
+  --color: white;
+}
+
+.header-title {
+  color: white;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.main-content {
+  --background: #f8f9fa;
+}
+
+.content-wrapper {
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-card {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 20px rgba(255, 107, 53, 0.08);
+  border: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.header-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffb347 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.header-icon.secondary {
+  background: linear-gradient(135deg, #ffb347 0%, #f7931e 50%, #ff6b35 100%);
+}
+
+.card-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.custom-item {
+  --background: transparent;
+  --border-color: rgba(255, 107, 53, 0.2);
+  --border-radius: 12px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --inner-padding-end: 0;
+  margin-bottom: 8px;
+  border: 1px solid rgba(255, 107, 53, 0.2);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.custom-item:hover {
+  --border-color: rgba(255, 107, 53, 0.4);
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.1);
+}
+
+.custom-label {
+  color: #666;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.custom-input,
+.custom-textarea,
+.custom-select {
+  --color: #333;
+  --placeholder-color: #999;
+  font-size: 1rem;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  margin-left: 16px;
+}
+
+.points-section {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 107, 53, 0.05) 0%,
+    rgba(255, 179, 71, 0.05) 100%
+  );
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.points-toggle {
+  --background: transparent;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+.points-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ffb347 0%, #f7931e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-right: 12px;
+}
+
+.points-toggle h3 {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.points-toggle p {
+  color: #666;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.custom-points-input {
+  margin-top: 16px;
+}
+
+.preview-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 20px rgba(255, 107, 53, 0.08);
+  border-left: 4px solid #ff6b35;
+}
+
+.preview-card h3 {
+  margin: 0 0 16px 0;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.preview-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.category-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.category-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.category-indicator span {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.points-preview {
+  color: #666;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.action-buttons {
+  margin-top: 32px;
+  margin-bottom: 40px;
+}
+
+.primary-button {
+  --background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffb347 100%);
+  --color: white;
+  --border-radius: 16px;
+  height: 56px;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
+  transition: all 0.3s ease;
+}
+
+.primary-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(255, 107, 53, 0.4);
+}
+
+.secondary-button {
+  --color: #666;
+  --border-radius: 16px;
+  height: 56px;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.secondary-button:hover {
+  --color: #ff6b35;
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: 16px;
+  }
+
+  .form-card {
+    padding: 20px;
+  }
+}
